@@ -8,7 +8,7 @@ const { init: usersInit } = require('./lib/data/users')
 const { init: queueInit } = require('./lib/data/lib/sqs.listener')
 
 const options = {
-  port: 3000,
+  port: 4000,
   // // Commented out until Elasticache is configured
   // cache: [{
   //   name: 'redis',
@@ -83,17 +83,17 @@ const init = async () => {
 
   // initialize database and start server
   usersInit()
-  // Commented out until SQS is configured
-  // .then(() => queueInit())
-  .then(async () => {
-    try {
-      await server.start()
-      console.log(`Server started at http://localhost:${server.info.port}`)
-    } catch (err) {
-      console.error(`Server could not start. Error: ${err}`)
-      logger.error(`Server could not start. Error: ${err}`)
-    }
-  })
+    // Commented out until SQS is configured
+    // .then(() => queueInit())
+    .then(async () => {
+      try {
+        await server.start()
+        console.log(`Server started at http://localhost:${server.info.port}`)
+      } catch (err) {
+        console.error(`Server could not start. Error: ${err}`)
+        logger.error(`Server could not start. Error: ${err}`)
+      }
+    })
 }
 
 init()

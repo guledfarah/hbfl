@@ -15,7 +15,7 @@ const subnets = [
   /* TODO: Add two subnets */
 ]
 
-async function execute () {
+async function execute() {
   try {
     const sgId = await helpers.createSecurityGroup(sgName, 80)
     const tgResult = await createTargetGroup(tgName)
@@ -32,14 +32,14 @@ async function execute () {
   }
 }
 
-function createLoadBalancer (lbName, sgId) {
+function createLoadBalancer(lbName, sgId) {
   // TODO: Create a load balancer
 }
 
-function createTargetGroup (tgName) {
+function createTargetGroup(tgName) {
   const params = {
     Name: tgName,
-    Port: 3000,
+    Port: 4000,
     Protocol: 'HTTP',
     VpcId: vpcId
   }
@@ -48,7 +48,7 @@ function createTargetGroup (tgName) {
   return helpers.sendELBCommand(command)
 }
 
-function createListener (tgArn, lbArn) {
+function createListener(tgArn, lbArn) {
   const params = {
     DefaultActions: [
       {
