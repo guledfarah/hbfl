@@ -14,4 +14,4 @@ RUN npm run build
 
 CMD [ "node", "index.js" ]
 
-EXPOSE 3000
+EXPOSE 4000
